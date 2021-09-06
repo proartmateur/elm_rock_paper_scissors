@@ -9,6 +9,8 @@ My first Web App developed with ELM language!
 - UI: ELM v0.19.1
 - Interaction: ELM v0.19.1
 
+[DEMO](https://proartmateur.github.io/elm_rock_paper_scissors/)
+
 ## Why ELM?
 
 ELM looks pretty and elegant, i want to learn functional programming architectural patterns for building frontend and backend.
