@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "webpack --mode development --watch",
     "start": "webpack serve --mode development ",
-    "build:elm": "elm make src/RockPaperScissors.elm --output=public/rps.js",
+    "build:elm": "elm make src/RockPaperScissors.elm --output=docs/rps.js",
     "build:styles": "webpack --mode production",
-    "build": "build:elm && build:styles"
+    "build": "npm run build:elm && npm run build:styles"
   },
   "keywords": [],
   "author": "",

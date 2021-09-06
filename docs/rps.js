@@ -5391,6 +5391,7 @@ var $elm$random$Random$int = F2(
 				}
 			});
 	});
+var $elm$core$Debug$log = _Debug_log;
 var $author$project$Components$RpsState$p2SelectOpt = function (p2_opt) {
 	switch (p2_opt) {
 		case 1:
@@ -5405,6 +5406,11 @@ var $author$project$Components$RpsState$p2SelectOpt = function (p2_opt) {
 };
 var $author$project$RockPaperScissors$update = F2(
 	function (msg, model) {
+		var _v0 = A2($elm$core$Debug$log, 'op1:', model.p1_opt);
+		var _v1 = A2(
+			$elm$core$Debug$log,
+			'op2:',
+			$elm$core$String$fromInt(model.p2_opt_num));
 		switch (msg.$) {
 			case 'PlayGame':
 				var p1_opt = msg.a;
@@ -5430,7 +5436,7 @@ var $author$project$RockPaperScissors$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{p1_opt: '', p2_opt: '', p2_opt_num: 0}),
+						{p1_opt: '', p2_opt: ''}),
 					$elm$core$Platform$Cmd$none);
 		}
 	});
@@ -5630,7 +5636,6 @@ var $author$project$Components$RpsState$botOptAreEquals = F2(
 	function (p1_opt, p2_opt) {
 		return _Utils_eq(p1_opt, p2_opt) ? true : false;
 	});
-var $elm$core$Debug$log = _Debug_log;
 var $author$project$Components$RpsState$calcResults = F2(
 	function (p1_opt, p2_opt) {
 		var _v0 = A2($elm$core$Debug$log, 'foo is', p1_opt + ('_' + p2_opt));
