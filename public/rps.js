@@ -5405,26 +5405,33 @@ var $author$project$RockPaperScissors$p2SelectOpt = function (p2_opt) {
 };
 var $author$project$RockPaperScissors$update = F2(
 	function (msg, model) {
-		if (msg.$ === 'PlayGame') {
-			var p1_opt = msg.a;
-			return _Utils_Tuple2(
-				_Utils_update(
-					model,
-					{p1_opt: p1_opt}),
-				A2(
-					$elm$random$Random$generate,
-					$author$project$RockPaperScissors$NewFace,
-					A2($elm$random$Random$int, 1, 3)));
-		} else {
-			var newFace = msg.a;
-			return _Utils_Tuple2(
-				_Utils_update(
-					model,
-					{
-						p2_opt: $author$project$RockPaperScissors$p2SelectOpt(model.p2_opt_num),
-						p2_opt_num: newFace
-					}),
-				$elm$core$Platform$Cmd$none);
+		switch (msg.$) {
+			case 'PlayGame':
+				var p1_opt = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{p1_opt: p1_opt}),
+					A2(
+						$elm$random$Random$generate,
+						$author$project$RockPaperScissors$NewFace,
+						A2($elm$random$Random$int, 1, 3)));
+			case 'NewFace':
+				var newFace = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							p2_opt: $author$project$RockPaperScissors$p2SelectOpt(model.p2_opt_num),
+							p2_opt_num: newFace
+						}),
+					$elm$core$Platform$Cmd$none);
+			default:
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{p1_opt: '', p2_opt: '', p2_opt_num: 0}),
+					$elm$core$Platform$Cmd$none);
 		}
 	});
 var $elm$json$Json$Encode$string = _Json_wrap;
@@ -5595,6 +5602,30 @@ var $author$project$RockPaperScissors$viewPlayerSelection = function (model) {
 					]))
 			]));
 };
+var $author$project$RockPaperScissors$ResetGame = {$: 'ResetGame'};
+var $elm$core$Basics$neq = _Utils_notEqual;
+var $author$project$RockPaperScissors$viewReplayOptions = function (model) {
+	return (model.p1_opt !== '') ? A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('rock-paper-scissors__replay')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('btn-replay'),
+						$elm$html$Html$Events$onClick($author$project$RockPaperScissors$ResetGame)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('R')
+					]))
+			])) : A2($elm$html$Html$div, _List_Nil, _List_Nil);
+};
 var $author$project$RockPaperScissors$botOptAreEquals = F2(
 	function (p1_opt, p2_opt) {
 		return _Utils_eq(p1_opt, p2_opt) ? true : false;
@@ -5667,6 +5698,7 @@ var $author$project$RockPaperScissors$view = function (model) {
 						$author$project$RockPaperScissors$viewPlayerSelection(model),
 						$author$project$RockPaperScissors$viewValidation(model)
 					])),
+				$author$project$RockPaperScissors$viewReplayOptions(model),
 				$author$project$RockPaperScissors$viewOptionControls(model)
 			]));
 };

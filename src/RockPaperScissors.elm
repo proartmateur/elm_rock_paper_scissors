@@ -88,6 +88,7 @@ calcResults p1_opt p2_opt =
 type Msg = 
     PlayGame String
     | NewFace Int
+    | ResetGame
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
@@ -106,6 +107,15 @@ update msg model =
                 Cmd.none
             )
 
+        ResetGame ->
+            (
+                {
+                    model | p1_opt = ""
+                    , p2_opt = ""
+                    , p2_opt_num = 0
+                },
+                Cmd.none
+            )
 
 -- SUBSCRIPTIONS
 
@@ -122,10 +132,27 @@ view model =
             [ viewPlayerSelection model
             , viewValidation model
             ]
+        , viewReplayOptions model
         , viewOptionControls model
         ]
 
-
+viewReplayOptions: Model -> Html Msg
+viewReplayOptions model =
+    if model.p1_opt /= "" then
+        div[
+            class "rock-paper-scissors__replay"
+        ]
+        [
+            button [ 
+                class "btn-replay"
+                , onClick ResetGame
+                ]
+            [
+                text "R"
+            ]
+        ]
+    else
+        div[][]
 viewOptionControls: Model -> Html Msg
 viewOptionControls model =
     if model.p1_opt == "" then
