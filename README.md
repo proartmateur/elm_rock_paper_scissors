@@ -5,7 +5,7 @@ My first Web App developed with ELM language!
 ## Development Stack
 
 - Styles: Sass(SCSS)
-- Animations [animate.css] (https://animate.style/)
+- Animations [animate.css](https://animate.style/)
 - UI: ELM v0.19.1
 - Interaction: ELM v0.19.1
 
