@@ -5229,7 +5229,7 @@ var $elm$core$Task$perform = F2(
 var $elm$browser$Browser$element = _Browser_element;
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
-var $author$project$RockPaperScissors$init = function (_v0) {
+var $author$project$Components$RpsState$init = function (_v0) {
 	return _Utils_Tuple2(
 		{p1_opt: '', p2_opt: '', p2_opt_num: 0, result: '---'},
 		$elm$core$Platform$Cmd$none);
@@ -5239,7 +5239,7 @@ var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $author$project$RockPaperScissors$subscriptions = function (model) {
 	return $elm$core$Platform$Sub$none;
 };
-var $author$project$RockPaperScissors$NewFace = function (a) {
+var $author$project$Components$RpsState$NewFace = function (a) {
 	return {$: 'NewFace', a: a};
 };
 var $elm$random$Random$Generate = function (a) {
@@ -5391,7 +5391,7 @@ var $elm$random$Random$int = F2(
 				}
 			});
 	});
-var $author$project$RockPaperScissors$p2SelectOpt = function (p2_opt) {
+var $author$project$Components$RpsState$p2SelectOpt = function (p2_opt) {
 	switch (p2_opt) {
 		case 1:
 			return 'Rock';
@@ -5414,7 +5414,7 @@ var $author$project$RockPaperScissors$update = F2(
 						{p1_opt: p1_opt}),
 					A2(
 						$elm$random$Random$generate,
-						$author$project$RockPaperScissors$NewFace,
+						$author$project$Components$RpsState$NewFace,
 						A2($elm$random$Random$int, 1, 3)));
 			case 'NewFace':
 				var newFace = msg.a;
@@ -5422,7 +5422,7 @@ var $author$project$RockPaperScissors$update = F2(
 					_Utils_update(
 						model,
 						{
-							p2_opt: $author$project$RockPaperScissors$p2SelectOpt(model.p2_opt_num),
+							p2_opt: $author$project$Components$RpsState$p2SelectOpt(model.p2_opt_num),
 							p2_opt_num: newFace
 						}),
 					$elm$core$Platform$Cmd$none);
@@ -5444,7 +5444,7 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $author$project$RockPaperScissors$PlayGame = function (a) {
+var $author$project$Components$RpsState$PlayGame = function (a) {
 	return {$: 'PlayGame', a: a};
 };
 var $elm$virtual_dom$VirtualDom$attribute = F2(
@@ -5500,7 +5500,7 @@ var $elm$html$Html$Events$onClick = function (msg) {
 };
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $author$project$RockPaperScissors$viewOptButton = F3(
+var $author$project$Components$ViewComponents$viewOptButton = F3(
 	function (model, opt_txt, disabled) {
 		return (!disabled) ? A2(
 			$elm$html$Html$button,
@@ -5517,7 +5517,7 @@ var $author$project$RockPaperScissors$viewOptButton = F3(
 							_Utils_eq(model.p1_opt, opt_txt))
 						])),
 					$elm$html$Html$Events$onClick(
-					$author$project$RockPaperScissors$PlayGame(opt_txt))
+					$author$project$Components$RpsState$PlayGame(opt_txt))
 				]),
 			_List_fromArray(
 				[
@@ -5538,14 +5538,14 @@ var $author$project$RockPaperScissors$viewOptButton = F3(
 						])),
 					A2($elm$html$Html$Attributes$attribute, 'disabled', ''),
 					$elm$html$Html$Events$onClick(
-					$author$project$RockPaperScissors$PlayGame(opt_txt))
+					$author$project$Components$RpsState$PlayGame(opt_txt))
 				]),
 			_List_fromArray(
 				[
 					$elm$html$Html$text(opt_txt)
 				]));
 	});
-var $author$project$RockPaperScissors$viewOptionControls = function (model) {
+var $author$project$Components$ViewComponents$viewOptionControls = function (model) {
 	return (model.p1_opt === '') ? A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -5554,9 +5554,9 @@ var $author$project$RockPaperScissors$viewOptionControls = function (model) {
 			]),
 		_List_fromArray(
 			[
-				A3($author$project$RockPaperScissors$viewOptButton, model, 'Rock', false),
-				A3($author$project$RockPaperScissors$viewOptButton, model, 'Paper', false),
-				A3($author$project$RockPaperScissors$viewOptButton, model, 'Scissors', false)
+				A3($author$project$Components$ViewComponents$viewOptButton, model, 'Rock', false),
+				A3($author$project$Components$ViewComponents$viewOptButton, model, 'Paper', false),
+				A3($author$project$Components$ViewComponents$viewOptButton, model, 'Scissors', false)
 			])) : A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -5565,12 +5565,12 @@ var $author$project$RockPaperScissors$viewOptionControls = function (model) {
 			]),
 		_List_fromArray(
 			[
-				A3($author$project$RockPaperScissors$viewOptButton, model, 'Rock', true),
-				A3($author$project$RockPaperScissors$viewOptButton, model, 'Paper', true),
-				A3($author$project$RockPaperScissors$viewOptButton, model, 'Scissors', true)
+				A3($author$project$Components$ViewComponents$viewOptButton, model, 'Rock', true),
+				A3($author$project$Components$ViewComponents$viewOptButton, model, 'Paper', true),
+				A3($author$project$Components$ViewComponents$viewOptButton, model, 'Scissors', true)
 			]));
 };
-var $author$project$RockPaperScissors$viewPlayerSelection = function (model) {
+var $author$project$Components$ViewComponents$viewPlayerSelection = function (model) {
 	return ((model.p1_opt === '') || (model.p1_opt === '')) ? $elm$html$Html$text('') : A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -5602,9 +5602,9 @@ var $author$project$RockPaperScissors$viewPlayerSelection = function (model) {
 					]))
 			]));
 };
-var $author$project$RockPaperScissors$ResetGame = {$: 'ResetGame'};
+var $author$project$Components$RpsState$ResetGame = {$: 'ResetGame'};
 var $elm$core$Basics$neq = _Utils_notEqual;
-var $author$project$RockPaperScissors$viewReplayOptions = function (model) {
+var $author$project$Components$ViewComponents$viewReplayOptions = function (model) {
 	return (model.p1_opt !== '') ? A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -5618,7 +5618,7 @@ var $author$project$RockPaperScissors$viewReplayOptions = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$Attributes$class('btn-replay'),
-						$elm$html$Html$Events$onClick($author$project$RockPaperScissors$ResetGame)
+						$elm$html$Html$Events$onClick($author$project$Components$RpsState$ResetGame)
 					]),
 				_List_fromArray(
 					[
@@ -5626,15 +5626,15 @@ var $author$project$RockPaperScissors$viewReplayOptions = function (model) {
 					]))
 			])) : A2($elm$html$Html$div, _List_Nil, _List_Nil);
 };
-var $author$project$RockPaperScissors$botOptAreEquals = F2(
+var $author$project$Components$RpsState$botOptAreEquals = F2(
 	function (p1_opt, p2_opt) {
 		return _Utils_eq(p1_opt, p2_opt) ? true : false;
 	});
 var $elm$core$Debug$log = _Debug_log;
-var $author$project$RockPaperScissors$calcResults = F2(
+var $author$project$Components$RpsState$calcResults = F2(
 	function (p1_opt, p2_opt) {
 		var _v0 = A2($elm$core$Debug$log, 'foo is', p1_opt + ('_' + p2_opt));
-		if (A2($author$project$RockPaperScissors$botOptAreEquals, p1_opt, p2_opt)) {
+		if (A2($author$project$Components$RpsState$botOptAreEquals, p1_opt, p2_opt)) {
 			return 'Nobody';
 		} else {
 			var _v1 = p1_opt + ('_' + p2_opt);
@@ -5656,8 +5656,8 @@ var $author$project$RockPaperScissors$calcResults = F2(
 			}
 		}
 	});
-var $author$project$RockPaperScissors$viewValidation = function (model) {
-	var result = A2($author$project$RockPaperScissors$calcResults, model.p1_opt, model.p2_opt);
+var $author$project$Components$ViewComponents$viewValidation = function (model) {
+	var result = A2($author$project$Components$RpsState$calcResults, model.p1_opt, model.p2_opt);
 	return ((model.p1_opt === '') || (model.p1_opt === '')) ? $elm$html$Html$text('') : A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -5675,7 +5675,7 @@ var $author$project$RockPaperScissors$viewValidation = function (model) {
 		_List_fromArray(
 			[
 				$elm$html$Html$text(
-				A2($author$project$RockPaperScissors$calcResults, model.p1_opt, model.p2_opt))
+				A2($author$project$Components$RpsState$calcResults, model.p1_opt, model.p2_opt))
 			]));
 };
 var $author$project$RockPaperScissors$view = function (model) {
@@ -5695,14 +5695,14 @@ var $author$project$RockPaperScissors$view = function (model) {
 					]),
 				_List_fromArray(
 					[
-						$author$project$RockPaperScissors$viewPlayerSelection(model),
-						$author$project$RockPaperScissors$viewValidation(model)
+						$author$project$Components$ViewComponents$viewPlayerSelection(model),
+						$author$project$Components$ViewComponents$viewValidation(model)
 					])),
-				$author$project$RockPaperScissors$viewReplayOptions(model),
-				$author$project$RockPaperScissors$viewOptionControls(model)
+				$author$project$Components$ViewComponents$viewReplayOptions(model),
+				$author$project$Components$ViewComponents$viewOptionControls(model)
 			]));
 };
 var $author$project$RockPaperScissors$main = $elm$browser$Browser$element(
-	{init: $author$project$RockPaperScissors$init, subscriptions: $author$project$RockPaperScissors$subscriptions, update: $author$project$RockPaperScissors$update, view: $author$project$RockPaperScissors$view});
+	{init: $author$project$Components$RpsState$init, subscriptions: $author$project$RockPaperScissors$subscriptions, update: $author$project$RockPaperScissors$update, view: $author$project$RockPaperScissors$view});
 _Platform_export({'RockPaperScissors':{'init':$author$project$RockPaperScissors$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
